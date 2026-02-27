@@ -5,12 +5,13 @@ import {
 	TRIGGER_ID,
 } from "@rocketman-system/streamkit-widget-helper";
 
-const battaryIcon = require("./media/battary.svg").default;
+const image = require("./media/bag.svg").default;
 
-const audio = new Audio(require("./media/camera.mp3").default);
+const audio = new Audio(require("./media/bag.mp3").default);
 
 export const App = React.memo(() => {
 	const [loaded, setLoaded] = React.useState(false);
+	const [show, setShow] = React.useState(false);
 	const [data, setData] = React.useState<{
 		/** ID of the effect these data belong to */
 		effectId: string;
@@ -46,70 +47,22 @@ export const App = React.memo(() => {
 		audio.autoplay = true;
 		audio.volume = data.volume / 100;
 
-		audio.onended = () => {
-			audio.currentTime = 8.13;
-			audio.play();
-		};
+		const tm = setTimeout(() => {
+			setShow(false);
+		}, (data.seconds * 1000) - 1500);
 
-		const int = setInterval(() => {
-			if (audio.currentTime >= 16.0) {
-				audio.currentTime = 8.13;
-				audio.play();
-			}
-		}, 100);
+		requestAnimationFrame(() => {
+			setShow(true);
+		})
 
 		return () => {
-			clearInterval(int);
+			clearInterval(tm);
 			audio.pause();
 		};
 	}, [loaded, data]);
 
-	if (!loaded) return <></>;
 
 	return (
-		<div className="effectMain">
-			<div className="camera">
-				<div className="top">
-					<div>
-						<div className="circle" /> REC
-					</div>
-					<div></div>
-					<div>
-						LOW BATTERY <img src={battaryIcon} className={"batteryIcon"} />
-					</div>
-				</div>
-				<div>
-					<div></div>
-					<div>
-						<div className="overlay">
-							<div className="overlay-element top-left"></div>
-							<div className="overlay-element top-right"></div>
-							<div className="overlay-element bottom-left"></div>
-							<div className="overlay-element bottom-right"></div>
-						</div>
-					</div>
-					<div></div>
-				</div>
-				<div>
-					<div>
-						ISO 100
-						{data?.name && (
-							<>
-								<br />
-								{data.name}
-							</>
-						)}
-					</div>
-					<div></div>
-					<div>
-						{Math.floor((window.innerHeight + window.innerWidth) / 100)} Mbps
-						<br />
-						{window.innerHeight}x{window.innerWidth}
-						<br />
-						FPS 60
-					</div>
-				</div>
-			</div>
-		</div>
+		<img className={`${show ? 'start' : ''} bag`} src={image} />
 	);
 });

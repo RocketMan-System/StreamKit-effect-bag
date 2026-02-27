@@ -1,8 +1,8 @@
 {
     "name": {
-        "en": "StreamKit Effect Template",
-        "ru": "Шаблон эффекта для StreamKit",
-        "ua": "Шаблон ефекту для StreamKit"
+        "en": "Head bag",
+        "ru": "Мешок на голову",
+        "ua": "Мішок на голову"
     },
     "author": "RocketMan",
     "version": "1.0.0",
@@ -11,6 +11,6 @@
     "settings": {
         "maxSeconds": 120,
         "volume": 70,
-        "defaultSeconds": 30
+        "lockSeconds": 18
     }
 }
