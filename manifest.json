@@ -4,12 +4,16 @@
         "ru": "Мешок на голову",
         "ua": "Мішок на голову"
     },
+    "description": {
+        "en": "Streamer knows a lot. Bag over his head and into the woods 😄",
+        "ru": "Стример очень много знает. Мешок на голову и в лес 😄",
+        "ua": "Стример дуже багато знає. Мішок на голову і в ліс 😄"
+    },
     "author": "RocketMan",
     "version": "1.0.0",
     "type": "effect",
     "permissions": ["effectData"],
     "settings": {
-        "maxSeconds": 120,
         "volume": 70,
         "lockSeconds": 18
     }
