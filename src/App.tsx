@@ -5,7 +5,7 @@ import {
 	TRIGGER_ID,
 } from "@rocketman-system/streamkit-widget-helper";
 
-const image = require("./media/bag.svg").default;
+const image = require("./media/bag.png").default;
 
 const audio = new Audio(require("./media/bag.mp3").default);
 
